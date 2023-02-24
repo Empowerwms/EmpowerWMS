@@ -1,0 +1,413 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_portal_dashboard
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-27 09:48+0000\n"
+"PO-Revision-Date: 2020-10-27 09:48+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_layout
+msgid "<i class=\"fa fa-pencil\"/> Edit"
+msgstr "<i class=\"fa fa-pencil\"/> 编辑"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Amount Due"
+msgstr "金额到期"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Bills"
+msgstr "账单"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_bill_chart
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_bill_chart
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Bills Analysis (Bills Chart)?"
+msgstr "票据分析（账单图表）？"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Bills Chart"
+msgstr "账单图表"
+
+#. module: sh_portal_dashboard
+#: model:ir.model,name:sh_portal_dashboard.model_res_company
+msgid "Companies"
+msgstr "公司"
+
+#. module: sh_portal_dashboard
+#: model:ir.model,name:sh_portal_dashboard.model_res_config_settings
+msgid "Config Settings"
+msgstr "配置设置"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Current Month"
+msgstr "这个月"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Current Week"
+msgstr "本周"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Current Year"
+msgstr "今年"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__display_name
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Due Date"
+msgstr "到期日"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "Edit"
+msgstr "编辑"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Filter Chart:"
+msgstr "过滤图："
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_last_record_limit
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_last_record_limit
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "How Many Recent Records Do You Want To Show?"
+msgstr "你想展示多少次记录？"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid ""
+"How many recent/last records do you want to show in table eg. 5, 10 etc."
+msgstr ""
+“您想在表格中显示多少最近/最后的记录，例如 5、10 等。”
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__id
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Invoice #"
+msgstr "发票 ＃"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_invoice_chart
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_invoice_chart
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Invoice Analysis (Invoice Chart)?"
+msgstr "发票分析（发票图）？"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Invoice Chart"
+msgstr "发票图表"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Invoice Date"
+msgstr "发票日期"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "Invoices"
+msgstr "发票"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_project_task_chart
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_project_task_chart
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Is Show Project Task Table?"
+msgstr "是显示项目任务表吗？"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_last_bill_table
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_last_bill_table
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Is Show Recent Bill Table?"
+msgstr "是最近的账单表吗？"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Is Show Recent Invoice Table?"
+msgstr "是最近的发票表吗？"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_last_invoice_table
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_last_invoice_table
+msgid "Is Show Recent Invoices Table?"
+msgstr "是最近的发票表吗？"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_last_purchase_order_table
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_last_purchase_order_table
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Is Show Recent Purchase Order Table?"
+msgstr "是最近的购买订单表吗？"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_last_quote_table
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_last_quote_table
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Is Show Recent Quotation Table?"
+msgstr "是近期引号表？"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_last_rfq_table
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_last_rfq_table
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Is Show Recent RFQ Table?"
+msgstr "是最近的RFQ表吗？"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_last_sale_order_table
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_last_sale_order_table
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Is Show Recent Sale Order Table?"
+msgstr "是最近的销售订单表吗？"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company____last_update
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "最后修改了"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Latest"
+msgstr "最新的"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "My Leads"
+msgstr "我的领导者"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "My Opportunities"
+msgstr "我的机会"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Order Date"
+msgstr "订购日期"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Order Number"
+msgstr "订单号"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Portal Dashboard"
+msgstr "门户仪表板"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Product Wise Purchase Data"
+msgstr "产品明智的购买数据"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Product Wise Sale Data"
+msgstr "产品明智的销售数据"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Project Task Data"
+msgstr "项目任务数据"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "Projects"
+msgstr "项目"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_purchase_chart
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_purchase_chart
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Purchase Analysis (Purchase Chart)?"
+msgstr "购买分析（购买图表）？"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Purchase Chart"
+msgstr "购买图表"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "Purchase Orders"
+msgstr "订单"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Quotation Number"
+msgstr "报价号码"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "Quotations"
+msgstr "报价"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Reference"
+msgstr "参考"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Request for Quotations"
+msgstr "请求报价"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Sale Chart"
+msgstr "销售图表"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Sale Orders"
+msgstr "销售订单"
+
+#. module: sh_portal_dashboard
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_company__sh_portal_dashboard_is_show_sale_chart
+#: model:ir.model.fields,field_description:sh_portal_dashboard.field_res_config_settings__sh_portal_dashboard_is_show_sale_chart
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Sales Analysis (Sales Chart)?"
+msgstr "销售分析（销售图表）？"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "Sales Orders"
+msgstr "销售订单"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show bill analysis chart in portal dashboard."
+msgstr "在门户仪表板上显示账单分析图表。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show invoice analysis chart in portal dashboard."
+msgstr "在门户仪表板上显示发票分析图表。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show project task table in portal dashboard."
+msgstr "在门户仪表板上显示项目任务表。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show purchase analysis chart in portal dashboard."
+msgstr "在门户仪表板上显示购买分析图表。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show recent Purchase Order table in portal dashboard."
+msgstr "在门户仪表板中显示最近的购买订单表。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show recent RFQ table in portal dashboard."
+msgstr "在门户仪表板中显示最近的RFQ表。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show recent Sale Order table in portal dashboard."
+msgstr "在门户仪表板上显示最近的销售订单表。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show recent bill table in portal dashboard."
+msgstr "在门户仪表板上显示最近的账单表。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show recent invoices table in portal dashboard."
+msgstr "在门户仪表板中显示最近的发票表。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show recent quotation table in portal dashboard."
+msgstr "在门户仪表板中显示最近的引号。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_website_res_config_settings
+msgid "Show sale analysis chart in portal dashboard."
+msgstr "在门户仪表板上显示销售分析图表。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Status"
+msgstr "地位"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "Tasks"
+msgstr "任务"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Today"
+msgstr "今天"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Top 10 products sold of the month"
+msgstr "销售的十大产品"
+
+#. module: sh_portal_dashboard
+#: code:addons/sh_portal_dashboard/models/res_config_settings.py:0
+#: code:addons/sh_portal_dashboard/models/res_config_settings.py:0
+#, python-format
+msgid "Value must be greater than 0."
+msgstr "值必须大于0。"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_my_home
+msgid "Yesterday"
+msgstr "昨天"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.portal_my_home_menu_my_account
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.portal_my_home_my_account
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_layout
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "Your Details"
+msgstr "你的资料"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_dashboard_portal_layout
+msgid "Your Documents"
+msgstr "你的文件"
+
+#. module: sh_portal_dashboard
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.portal_docs_entry
+#: model_terms:ir.ui.view,arch_db:sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view
+msgid "view"
+msgstr "看法"
