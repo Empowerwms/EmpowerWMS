@@ -6,8 +6,6 @@ from odoo.http import request
 from datetime import date
 from dateutil.relativedelta import relativedelta
 from dateutil import rrule
-import logging
-_logger = logging.getLogger(__name__)
 
 # Maps only the 6 first bits of the base64 data, accurate enough
 # for our purpose and faster than decoding the full blob first
@@ -1186,7 +1184,6 @@ class Charts(http.Controller):
                         <a href="/my/project/%s"><span> %s </span></a>
                         
                         """ % (task.project_id.id if task.project_id else "#", task.project_id.name if task.project_id else "")
-                    # raise UserError(project_url)
 
                     vals = {
                         "project": project_url,
@@ -1195,7 +1192,6 @@ class Charts(http.Controller):
                         "deadline": task.date_deadline or '',
                     }
                     task_list.append(vals)
-            # _logger.exception(task_list)        
             values.update({
                 "tasks": task_list
             })
@@ -1858,7 +1854,6 @@ class Charts(http.Controller):
                         <a href="%s"><span> %s </span></a>
                         
                         """ % (invoice.get_portal_url(), invoice.name if invoice.name else "Draft Invoice")
-                    print(invoice_url)
 
                     invoice_dic = {
                         "name": invoice_url,
@@ -1868,7 +1863,6 @@ class Charts(http.Controller):
                         "amount_residual": invoice.amount_residual,
                     }
                     invoice_list.append(invoice_dic)
-                   
 
         values.update({
             "invoices": invoice_list
@@ -2025,224 +2019,3 @@ class Charts(http.Controller):
         })
 
         return values
-    @http.route(['/sh_portal_dashboard/get_last_inventory_transfer'], type='json', auth="user", methods=['POST'])
-    def get_last_inventory_transfer(self, sh_filter_chart_type=False, **kw):
-        """ Generate last inventory transfer table.
-            :param url : sh_filter_chart_type whether portal user want to show table by today, yesterday, current week, current month, current year etc.
-            :returns dict
-        """
-
-        values = {
-            'transfers': [],
-            'is_show_last_inventory_transfer_table': False,
-        }
-
-        order_list = []
-
-        is_installed_stock = request.env['ir.module.module'].sudo().search(
-            [('name', '=', 'stock'), ('state', '=', 'installed')]).id
-        if is_installed_stock and request.env.company.sh_portal_dashboard_is_show_last_inventory_transfer_table:
-
-            values.update({
-                'is_show_last_inventory_transfer_table': True
-            })
-
-            partner = request.env.user.partner_id
-            sale_order_obj = request.env['stock.picking']
-
-            domain = [
-           
-                # ('state', 'in', ['assigned', 'done'])
-            ]
-
-            #if sh_filter_chart_type value = False than assign value today and filter by default today
-            if not sh_filter_chart_type:
-                sh_filter_chart_type = 'today'
-
-            if sh_filter_chart_type == 'today':
-                #filter data by today.
-                today_domain = [
-                    ('scheduled_date', '>=', fields.Date.to_string(date.today())),
-                    ('scheduled_date', '<=', fields.Date.to_string(date.today()))
-                ]
-                domain = today_domain
-
-            elif sh_filter_chart_type == 'yesterday':
-                #filter data by yesterday
-                yesterday_domain = [
-                    ('scheduled_date', '>=', fields.Date.to_string(
-                        date.today() + relativedelta(days=-1))),
-                    ('scheduled_date', '<=', fields.Date.to_string(
-                        date.today() + relativedelta(days=-1)))
-                ]
-                domain += yesterday_domain
-
-            elif sh_filter_chart_type == 'current_week':
-                #filter data by current week
-
-                week_date_start = date.today() - relativedelta(days=date.today().weekday())
-                week_date_end = week_date_start + relativedelta(days=6)
-
-                current_week_domain = [
-                    ('scheduled_date', '>=', week_date_start),
-                    ('scheduled_date', '<=', week_date_end)
-                ]
-
-                domain += current_week_domain
-
-            elif sh_filter_chart_type == 'current_month':
-                #filter data by current month
-
-                month_date_start = date.today() + relativedelta(day=1)
-                month_date_end = date.today() + relativedelta(day=1, months=+1, days=-1)
-
-                current_month_domain = [
-                    ('scheduled_date', '>=', month_date_start),
-                    ('scheduled_date', '<=', month_date_end)
-                ]
-
-                domain += current_month_domain
-
-            elif sh_filter_chart_type == 'current_year':
-                #filter data by current year
-
-                # pick a year from current date
-                year = date.today().year
-                # create date objects
-                year_date_start = date(year, 1, 1)
-                year_date_end = date(year, 12, 31)
-
-                current_year_domain = [
-                    ('scheduled_date', '>=', year_date_start),
-                    ('scheduled_date', '<=', year_date_end)
-                ]
-
-                domain += current_year_domain
-
-            #fire searching here
-            inventory_transfer = sale_order_obj.sudo().search(domain, order="scheduled_date desc",
-                                                       limit=request.env.company.sh_portal_dashboard_is_show_last_record_limit)
-
-            if inventory_transfer:
-                for order in inventory_transfer:
-                    status = ""
-
-                    if order.state == 'assigned':
-                        status = """
-                                <span class="badge badge-pill bg-info"><i class="fa fa-fw fa-clock-o" aria-label="Ready" title="Ready" role="img"></i><span class="d-none d-md-inline">Ready</span></span>                       
-                    
-                    """
-                        
-                    elif order.state=='done':
-                        status = """
-                             <span class="badge badge-pill bg-success"><i class="fa fa-fw fa-check" aria-label="Fully Delivered" title="Fully Delivered" role="img"></i><span class="d-none d-md-inline"> Fully Delivered</span></span>                      
-                                
-                                """
-
-                    elif order.state=='waiting':
-                        # picking_type_receipts = 'Receipts'
-                         status = """
-                        
-                                <span class="badge badge-pill bg-warning"><i class="fa fa-fw fa-clock-o" aria-label="Partial" title="Partial" role="img"></i><span class="d-none d-md-inline">Partial</span></span>    
-                                                                                 
-                        
-                        """
-               
-
-                    
-                    
-                    quot_url = """
-                        <a href="/my/delieveries/%s"><span> %s </span></a>
-                        
-                        """ % (order.id if order.id else "#", order.name)
-                        
-                    order_dic = {
-                        "name": quot_url,
-                        "date_order": order.scheduled_date,
-                        "status": status,
-                    }
-                    order_list.append(order_dic)
-
-            
-        # _logger.exception(order_list)
-        values.update({
-            "transfers": order_list
-        })
-        
-
-        return values
-
-    @http.route(['/sh_portal_dashboard/get_products_stock'], type='json', auth="user", methods=['POST'])
-    def get_products_stock(self, sh_filter_chart_type=False,products=[], **kw):
-        
-        """ Generate products stock table.
-            :param url : sh_filter_chart_type whether portal user want to show table by today, yesterday, current week, current month, current year etc.
-            :returns dict
-        """
-        # print(products)
-        
-        values = {
-            'products': [],
-            'is_show_products_table': False,
-        }
-
-        products_list = []
-
-        is_installed_stock = request.env['ir.module.module'].sudo().search(
-            [('name', '=', 'stock'), ('state', '=', 'installed')]).id
-        if is_installed_stock and request.env.company.sh_portal_dashboard_is_show_products_table:
-
-            values.update({
-                'is_show_products_table': True
-            })
-
-            # partner = request.env.user.partner_id
-            company_lst=[]
-            for ids in request.env.user.company_ids:
-                company_lst.append(ids.id)
-            _logger.exception(company_lst)
-            product_list = products.split(", ")
-            _logger.exception(product_list)
-            product_obj = request.env['product.template'].search([('name',"in",product_list),('company_id',"in",company_lst)])
-            _logger.exception(product_obj)
-            
-            
-
-           
-
-            #if sh_filter_chart_type value = False than assign value today and filter by default today
-            if not sh_filter_chart_type:
-                sh_filter_chart_type = 'today'
-
-            if sh_filter_chart_type == 'today' or sh_filter_chart_type == 'yesterday' or sh_filter_chart_type == 'current_week' or sh_filter_chart_type == 'current_month' or sh_filter_chart_type == 'current_year':
-                domain = []
-
-            inventory_products = product_obj.sudo().search(domain,limit=None)
-
-            if product_obj:
-                for product in product_obj:
-                    # if product.name in product_list:
-                        quot_url = """
-                            <a href="/my/products/%s"><span> %s </span></a>
-                            
-                            """ % (product.id if product.id else "#", product.name)
-
-                        onhand=int(product.qty_available)
-                        forcast=int(product.virtual_available)
-
-                        product_dic = {
-                            "name": quot_url,
-                            "onhand_qty": str(onhand),
-                            "forcast_qty": str(forcast),
-                        }
-                        products_list.append(product_dic)
-
-            
-        # _logger.exception(products_list)
-        values.update({
-            "products": products_list
-        })
-        
-
-        return values
-

@@ -31,11 +31,6 @@ class Company(models.Model):
         string="Is Show Recent Invoices Table?")
     sh_portal_dashboard_is_show_last_bill_table = fields.Boolean(
         string="Is Show Recent Bill Table?")
-    sh_portal_dashboard_is_show_last_inventory_transfer_table = fields.Boolean(
-        string="Is Show Recent Inventory Transfer Table?")
-
-    sh_portal_dashboard_is_show_products_table = fields.Boolean(
-        string="Is Show Products quantity Table?")
 
     sh_portal_dashboard_is_show_last_record_limit = fields.Integer(
         string="How Many Recent Records Do You Want To Show?", default=5)
@@ -101,16 +96,6 @@ class ResConfigSettings(models.TransientModel):
                                                                  related="company_id.sh_portal_dashboard_is_show_last_bill_table",
                                                                  readonly=False
                                                                  )
-    sh_portal_dashboard_is_show_last_inventory_transfer_table = fields.Boolean(string="Is Show Recent Inventory Transfer Table?",
-                                                                 related="company_id.sh_portal_dashboard_is_show_last_inventory_transfer_table",
-                                                                 readonly=False
-                                                                 )                                                        
-
-                                                              
-    sh_portal_dashboard_is_show_products_table = fields.Boolean(string="Is Show Products quantity Table?",
-                                                                 related="company_id.sh_portal_dashboard_is_show_products_table",
-                                                                 readonly=False
-                                                                 )                                                        
 
     sh_portal_dashboard_is_show_last_record_limit = fields.Integer(string="How Many Recent Records Do You Want To Show?",
                                                                    related="company_id.sh_portal_dashboard_is_show_last_record_limit",
