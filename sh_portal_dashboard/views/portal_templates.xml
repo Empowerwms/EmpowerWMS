@@ -59,6 +59,12 @@
                             class="fa fa-shopping-cart sh_icon"
                             style="background: linear-gradient(60deg, #ce93d8, #8e24aa); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(70, 114, 221, 0.4);"
                         ></span>
+
+                        <span
+                            t-if="url == '/my/delieveries' "
+                            class="fa fa-shopping-cart sh_icon"
+                            style="background: linear-gradient(60deg, #ce93d8, #8e24aa); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(70, 114, 221, 0.4);"
+                        ></span>
                         
 
                         <span
@@ -172,7 +178,7 @@
         <!-- To Show Charts. -->
         <xpath expr="//div[hasclass('o_portal_docs')]" position="after">
             <t
-                t-if="request.env.company.sh_portal_dashboard_is_show_sale_chart or request.env.company.sh_portal_dashboard_is_show_purchase_chart or request.env.company.sh_portal_dashboard_is_show_invoice_chart or request.env.company.sh_portal_dashboard_is_show_bill_chart or request.env.company.sh_portal_dashboard_is_show_project_task_chart or request.env.company.sh_portal_dashboard_is_show_last_quote_table or request.env.company.sh_portal_dashboard_is_show_last_sale_order_table or request.env.company.sh_portal_dashboard_is_show_last_rfq_table or request.env.company.sh_portal_dashboard_is_show_last_purchase_order_table or request.env.company.sh_portal_dashboard_is_show_last_invoice_table or request.env.company.sh_portal_dashboard_is_show_last_bill_table"
+                t-if="request.env.company.sh_portal_dashboard_is_show_sale_chart  or request.env.company.sh_portal_dashboard_is_show_products_table or request.env.company.sh_portal_dashboard_is_show_purchase_chart or request.env.company.sh_portal_dashboard_is_show_invoice_chart or request.env.company.sh_portal_dashboard_is_show_bill_chart or request.env.company.sh_portal_dashboard_is_show_project_task_chart or request.env.company.sh_portal_dashboard_is_show_last_quote_table or request.env.company.sh_portal_dashboard_is_show_last_sale_order_table or request.env.company.sh_portal_dashboard_is_show_last_rfq_table or request.env.company.sh_portal_dashboard_is_show_last_purchase_order_table or request.env.company.sh_portal_dashboard_is_show_last_invoice_table or request.env.company.sh_portal_dashboard_is_show_last_bill_table"
             >
                 <div class="form-group mt-5">
                     <label for="sel1">Filter Chart:</label>
@@ -185,8 +191,55 @@
                     </select>
                 </div>
             </t>
+        <!-- To Show product many2many. -->
+              <t
+                t-if="request.env.company.sh_portal_dashboard_is_show_products_table ">
+                
+                <div class="form-group mt-5">
+                
+                    <label for="sel2">Select Product:</label>
+                    <link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
+                    <script src="js/mobiscroll.javascript.min.js"></script>
+                    <input mbsc-input="True" id="demo-multiple-select-input" placeholder="Please select..." data-dropdown="true" data-input-style="outline" data-label-style="stacked" data-tags="true" />
+                   
+                    <select name="product_name" id="demo-multiple-select" class="form-control col-md-3 ml-auto"  style="width:30%"  multiple = "multiple">
+                    <t t-set="companies" t-value="request.env['res.users'].sudo().search([('id','=',request.env.user.id)]).company_ids" />
+                        <t t-foreach="companies" t-as="company">
+                            <t t-set="product_rec" t-value="request.env['product.template'].sudo().search([('company_id','=',company.id)])" />
+                             <t t-foreach="product_rec" t-as="product">
+                            <option t-esc='product.name' t-att-value='product.id'/>
+                         </t>
+                         </t>
 
+                    </select>
+                </div>
+            </t>
+         
+           
             <!-- Table Data Start Here -->
+
+            <div class="row">
+                <!-- Product Table -->
+                <t t-set="is_installed_stock" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'stock'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_stock and request.env.company.sh_portal_dashboard_is_show_products_table">
+                    <div class="col">
+                        <div class="sh_dashboard_table">
+                            <div class="text-center">Latest <t t-esc="request.env.company.sh_portal_dashboard_is_show_last_record_limit" /> Products</div>
+                            <table id="js_id_tbl_products_stock" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity on Hand</th>
+                                        <th>Forcasted Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </div>
+
 
             <div class="row">
                 <!-- Quotation Table -->
@@ -268,6 +321,30 @@
                 </t>
             </div>
 
+            <!-- <div class="row"> -->
+                <!-- transfers Order Table -->
+                <!-- <t t-set="is_installed_stock" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'stock'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_stock and request.env.company.sh_portal_dashboard_is_show_last_inventory_transfer_table">
+                    <div class="col">
+                        <div class="sh_dashboard_table">
+                            <div class="text-center">Latest <t t-esc="request.env.company.sh_portal_dashboard_is_show_last_record_limit" /> Transfers</div>
+                            <table id="js_id_tbl_last_tranfers_order" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Order Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t> -->
+            <!-- </div> -->
+
+ 
+
             <div class="row">
                 <!-- Invoice Table -->
                 <t t-set="is_installed_account" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'account'), ('state', '=', 'installed')]).id" />
@@ -291,7 +368,7 @@
                     </div>
                 </t>
 
-                <!-- Bill Table -->
+        
                 <t t-if="is_installed_account and request.env.company.sh_portal_dashboard_is_show_last_bill_table">
                     <div class="col">
                         <div class="sh_dashboard_table">
@@ -543,6 +620,23 @@
                                         </div>
                                     </div>
                                     <a href="/my/purchase">view</a>
+                                </div>
+                            </div>
+                        </t>
+                          <!-- inventory -->
+                        <t t-set="is_installed_inventory" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'stock'), ('state', '=', 'installed')]).id" />
+
+                        <t t-if="is_installed_inventory">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-12" t-if="inventory_count">
+                                <div class="sh_box mt-5">
+                                    <div class="sh_content">
+                                        <span class="fa fa-shopping-cart sh_icon" style="background: linear-gradient(60deg, #4e60c5, #3f51b5); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(70, 114, 221, 0.4);"></span>
+                                        <div class="sh_description">
+                                            <h3><t t-esc="innventory_count" /></h3>
+                                            <p>Inventory Transfers</p>
+                                        </div>
+                                    </div>
+                                    <a href="/my/delieveries">view</a>
                                 </div>
                             </div>
                         </t>

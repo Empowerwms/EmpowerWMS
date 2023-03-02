@@ -1,3 +1,4 @@
+global_names=[];
 odoo.define("sh_portal_dashboard.sale_charts", function (require) {
     "use strict";
 
@@ -385,6 +386,7 @@ odoo.define("sh_portal_dashboard.sale_charts", function (require) {
         ajax.jsonRpc("/sh_portal_dashboard/get_project_task_data", "call", {
             sh_filter_chart_type: $.cookie("sh_filter_chart_type"),
         }).then(function (data) {
+            console.log(data);
             var table = '<table id="js_id_tbl_project_task" class="table rounded bg-white"> <thead> <tr> <th>Project</th> <th>Task</th> <th>Deadline</th> </tr> </thead><tbody>';
 
             _.each(data.tasks, function (rec) {
@@ -392,6 +394,7 @@ odoo.define("sh_portal_dashboard.sale_charts", function (require) {
             });
 
             table = table + "</tbody></table>";
+        
 
             if (!data.tasks.length) {
                 table = table + '<div class="js_cls_sh_portal_dashbaord_table_no_data_msg alert alert-info" role="alert">No records found!</div>';
@@ -525,6 +528,7 @@ odoo.define("sh_portal_dashboard.sale_charts", function (require) {
             });
 
             table = table + "</tbody></table>";
+        
 
             if (!data.orders.length) {
                 table = table + '<div class="js_cls_sh_portal_dashbaord_table_no_data_msg alert alert-info" role="alert">No records found!</div>';
@@ -534,6 +538,83 @@ odoo.define("sh_portal_dashboard.sale_charts", function (require) {
                 $("#js_id_tbl_last_purchase_order").replaceWith(table);
             } else {
                 $("#js_id_tbl_last_purchase_order").hide();
+            }
+        });
+    }
+
+    /**
+     * Fetch the recent invoice table data by ajax call.
+     *
+     * @returns {rendered chart}
+     */
+
+    function get_last_transfer() {
+        console.log("sending request");
+        ajax.jsonRpc("/sh_portal_dashboard/get_last_inventory_transfer", "call", {
+            sh_filter_chart_type: $.cookie("sh_filter_chart_type"),
+        }).then(function (data) {
+            
+            var table = '<table id="js_id_tbl_last_tranfers_order" class="table table-sm"> <thead> <tr> <th>Reference</th> <th>Order Date</th> <th>Status</th>  </tr> </thead><tbody>';
+            
+            _.each(data.transfers, function (rec) {
+                table = table + "<tr> <td>" + rec.name + "</td> <td>" + rec.date_order + "</td> <td>" + rec.status + "</td> </tr>";
+            });
+            console.log("r");
+            table = table + "</tbody></table>";
+            
+            console.log("r");
+            if (!data.transfers.length) {
+                
+            console.log("r");
+                table = table + '<div class="js_cls_sh_portal_dashbaord_table_no_data_msg alert alert-info" role="alert">No records found!</div>';
+            }
+            
+        
+            if (data.is_show_last_inventory_transfer_table) {
+                $("#js_id_tbl_last_tranfers_order").replaceWith(table);
+            } else {
+                $("#js_id_tbl_last_tranfers_order").hide();
+            }
+        });
+    }
+
+    /**
+     * Fetch the recent invoice table data by ajax call.
+     *
+     * @returns {rendered chart}
+     */
+
+    function get_products_stock() {
+
+        
+        
+        ajax.jsonRpc("/sh_portal_dashboard/get_products_stock", "call", {
+            sh_filter_chart_type: $.cookie("sh_filter_chart_type"), products:global_names
+
+
+        }).then(function (data) {
+            console.log(global_names)
+            var table = '<table id="js_id_tbl_products_stock" class="table table-sm"> <thead> <tr> <th>Product</th> <th>Quantity On Hand</th> <th>Forcasted Quantity</th>  </tr> </thead><tbody>';
+            
+            _.each(data.products, function (rec) {
+                table = table + "<tr> <td>" + rec.name + "</td> <td>" + rec.onhand_qty + "</td> <td>" + rec.forcast_qty + "</td> </tr>";
+            });
+    
+            table = table + "</tbody></table>";
+            
+        
+            // if (!data.products.length) {
+                
+        
+
+            //     table = table + '<div class="js_cls_sh_portal_dashbaord_table_no_data_msg alert alert-info" role="alert">No records found!</div>';
+            // }
+            
+            // console.log(table);
+            if (data.is_show_products_table) {
+                $("#js_id_tbl_products_stock").replaceWith(table);
+            } else {
+                $("#js_id_tbl_products_stock").hide();
             }
         });
     }
@@ -611,6 +692,44 @@ odoo.define("sh_portal_dashboard.sale_charts", function (require) {
      * @returns {rendered chart}
      */
 
+
+    // $(document).ready(function() {
+    //     $('#product-getting-selected').MultiSelectTag();
+    // });
+    mobiscroll.setOptions({
+        theme: 'ios',
+        themeVariant: 'light'
+    });
+    
+    mobiscroll.select('#demo-multiple-select', {
+        inputElement: document.getElementById('demo-multiple-select-input')
+        
+    
+    });
+
+    $('#demo-multiple-select-input').change(function(){
+        var arr = $(this).val();
+        global_names=arr
+        
+        get_products_stock();
+        console.log(arr)
+      })
+
+    
+//     document.getElementById('demo-multiple-select-input')= function() {
+//         var selected = [];
+//         for (var option of document.getElementById('demo-multiple-select-input').options)
+//         {
+//             if (option.selected) {
+//                 selected.push(option.value);
+//             }
+//         }
+//         alert(selected);
+// }
+
+
+
+
     $(document).ready(function(){
     	// document ready start
 
@@ -639,6 +758,8 @@ odoo.define("sh_portal_dashboard.sale_charts", function (require) {
     	//last RFQS
     	get_last_rfq();
     	get_last_purchase();
+        get_last_transfer();
+        get_products_stock();
     	
     	//invoice Table
     	get_last_invoice();
@@ -676,11 +797,13 @@ odoo.define("sh_portal_dashboard.sale_charts", function (require) {
     		
     		//last RFQS
     		get_last_rfq();		
-    		get_last_purchase();		
+    		get_last_purchase();
+            get_last_transfer();		
     		
     		//invoice Table
     		get_last_invoice();
     		get_last_bill();
+            get_products_stock();
     		
     		
         });
