@@ -596,19 +596,26 @@ odoo.define("sh_portal_dashboard.sale_charts", function (require) {
             console.log(global_names)
             var table = '<table id="js_id_tbl_products_stock" class="table table-sm"> <thead> <tr> <th>Product</th> <th>Quantity On Hand</th> <th>Forcasted Quantity</th>  </tr> </thead><tbody>';
             
-            _.each(data.products, function (rec) {
+            _.each(data.all_products, function (rec) {
                 table = table + "<tr> <td>" + rec.name + "</td> <td>" + rec.onhand_qty + "</td> <td>" + rec.forcast_qty + "</td> </tr>";
             });
     
             table = table + "</tbody></table>";
             
         
-            // if (!data.products.length) {
-                
+            if (data.products.length) {
+                _.each(data.products, function (rec) {
+                    table = table + "<tr> <td>" + rec.name + "</td> <td>" + rec.onhand_qty + "</td> <td>" + rec.forcast_qty + "</td> </tr>";
+                   
+                });
         
+                
+                // $("#js_id_tbl_products_stock").replaceWith(table);
+               
+            }
+            table = table + "</tbody></table>";
+           
 
-            //     table = table + '<div class="js_cls_sh_portal_dashbaord_table_no_data_msg alert alert-info" role="alert">No records found!</div>';
-            // }
             
             // console.log(table);
             if (data.is_show_products_table) {

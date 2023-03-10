@@ -153,7 +153,7 @@
                             </div>
                         </div>
 
-                         <div class="col-12 col-md-6 o_setting_box">
+                         <!-- <div class="col-12 col-md-6 o_setting_box">
                             <div class="o_setting_left_pane">
                                 <field name="sh_portal_dashboard_is_show_products_table" />
                             </div>
@@ -164,7 +164,7 @@
                                 </div>
                             </div>
                         </div>
-
+ -->
 
                         <div class="col-12 col-md-6 o_setting_box">
                             <div class="o_setting_left_pane">

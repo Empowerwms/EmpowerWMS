@@ -18,6 +18,20 @@
         </xpath>
     </template>
 
+    <template id="portal_my_home_my_products" name="Portal My Home : My Products Details" inherit_id="portal.portal_my_home" priority="30">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Products</t>
+                <t t-set="url" t-value="'/my/products'" />
+                <t t-set="companies" t-value="request.env['res.users'].sudo().search([('id','=',request.env.user.id)]).company_ids" />
+                 <t t-foreach="companies" t-as="company">
+                 <t t-set="product_rec" t-value="request.env['product.template'].sudo().search([('company_id','=',company.id)])" />
+                              <t t-set="count" t-value="len(product_rec)" />
+                         </t>
+            </t>
+        </xpath>
+    </template>
+
     <template id="portal_docs_entry" inherit_id="portal.portal_docs_entry" name="SH My Portal Docs Entry">
         <xpath expr="//a[hasclass('list-group-item')]" position="replace">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -26,6 +40,7 @@
                         <t t-set="pre_defined_icon" t-value="['/my/account', '/my/leads', '/my/opportunities', '/my/quotes', '/my/orders', '/my/invoices', '/my/purchase', '/my/projects', '/my/tasks']" />
 
                         <span t-if="url == '/my/account' " class="fa fa-user sh_icon"></span>
+                        <span t-if="url == '/my/products' " class="fa fa-shopping-cart sh_icon"></span>
 
                         <span
                             t-if="url == '/my/leads' "
@@ -192,7 +207,7 @@
                 </div>
             </t>
         <!-- To Show product many2many. -->
-              <t
+              <!-- <t
                 t-if="request.env.company.sh_portal_dashboard_is_show_products_table ">
                 
                 <div class="form-group mt-5">
@@ -213,14 +228,14 @@
 
                     </select>
                 </div>
-            </t>
+            </t> -->
          
            
             <!-- Table Data Start Here -->
 
-            <div class="row">
+            <!-- <div class="row"> -->
                 <!-- Product Table -->
-                <t t-set="is_installed_stock" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'stock'), ('state', '=', 'installed')]).id" />
+                <!-- <t t-set="is_installed_stock" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'stock'), ('state', '=', 'installed')]).id" />
                 <t t-if="is_installed_stock and request.env.company.sh_portal_dashboard_is_show_products_table">
                     <div class="col">
                         <div class="sh_dashboard_table">
@@ -237,8 +252,8 @@
                             </table>
                         </div>
                     </div>
-                </t>
-            </div>
+                </t> -->
+            <!-- </div> -->
 
 
             <div class="row">

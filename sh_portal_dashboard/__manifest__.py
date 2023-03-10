@@ -16,6 +16,7 @@
     "data": [
         "views/portal_templates.xml",
         "views/res_config_settings_views.xml",
+          "views/viewurproduct.xml",
     ],
     'assets': {
         'web.assets_frontend': [

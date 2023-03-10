@@ -6,7 +6,15 @@ from odoo.http import request
 from datetime import date
 from dateutil.relativedelta import relativedelta
 from dateutil import rrule
+from odoo.addons.http_routing.models.ir_http import slug
+from odoo.addons.website_sale.controllers.main import TableCompute
+from openerp.tools.translate import _
+from odoo.tools import date_utils
+import operator 
+from collections import OrderedDict
+
 import logging
+
 _logger = logging.getLogger(__name__)
 
 # Maps only the 6 first bits of the base64 data, accurate enough
@@ -2183,10 +2191,12 @@ class Charts(http.Controller):
         
         values = {
             'products': [],
+             'all_products': [],
             'is_show_products_table': False,
         }
 
         products_list = []
+        all_products_list = []
 
         is_installed_stock = request.env['ir.module.module'].sudo().search(
             [('name', '=', 'stock'), ('state', '=', 'installed')]).id
@@ -2204,6 +2214,8 @@ class Charts(http.Controller):
             product_list = products.split(", ")
             _logger.exception(product_list)
             product_obj = request.env['product.template'].search([('name',"in",product_list),('company_id',"in",company_lst)])
+            _logger.exception(product_obj)
+            all_products_obj = request.env['product.template'].search([('company_id',"in",company_lst)])
             _logger.exception(product_obj)
             
             
@@ -2236,13 +2248,88 @@ class Charts(http.Controller):
                             "forcast_qty": str(forcast),
                         }
                         products_list.append(product_dic)
+            if all_products_obj:
+                for product in all_products_obj:
+                    # if product.name in product_list:
+                        quot_url = """
+                            <a href="/my/products/%s"><span> %s </span></a>
+                            
+                            """ % (product.id if product.id else "#", product.name)
+
+                        onhand=int(product.qty_available)
+                        forcast=int(product.virtual_available)
+
+                        product_dic = {
+                            "name": quot_url,
+                            "onhand_qty": str(onhand),
+                            "forcast_qty": str(forcast),
+                        }
+                        all_products_list.append(product_dic)
 
             
         # _logger.exception(products_list)
         values.update({
-            "products": products_list
+            "products": products_list,
+            "all_products":all_products_list
         })
         
 
         return values
+
+
+
+    @http.route(['/my/products', '/my/products/page/<int:page>'], type='http', auth="user", website=True, csrf=False)
+    def index(self, page=1,search=None,search_in=None,**kw):
+
+        company_lst=[]
+        for ids in request.env.user.company_ids:
+            company_lst.append(ids.id)
+        Project_sudo = request.env['product.template'].sudo().search([('company_id',"in",company_lst)])
+       
+        domain = []
+        count_domain = []
+
+        searchbar_inputs = {
+            'all': {'input': 'all', 'label': _('Search in All')},
+            # 'externalId': {'input': 'external_id', 'label': _('Search in  External ID')},
+        }
+
+     
+        
+        if search:
+            domain.append("|")
+            domain.append(('name', 'ilike', search))
+            count_domain.append(('name', 'ilike', search))
+            domain.append(('default_code', 'ilike', search))
+            count_domain.append(('default_code', 'ilike', search))
+        # raise UserError(domain)
+        project_count = Project_sudo.search_count(count_domain)
+        # pager
+        pager = request.website.pager(
+            url="/my/products",
+            url_args={'search': search,'search_in': 'all'},
+            total=project_count,
+            page=page,
+            step=10
+        )
+
+      
+      
+        projects = Project_sudo.search(domain, limit=10, offset=pager['offset'])
+       
+
+        values={}
+
+        values.update({
+            'projects': projects,
+            'page_name': 'product',
+            'default_url': '/my/products',
+            'pager': pager,
+            'search_in': 'all',
+            'searchbar_inputs': searchbar_inputs,
+
+        })
+        # raise UserError(values['search_in'])
+        _logger.exception(values['search_in'])
+        return request.render('sh_portal_dashboard.viewurproduct', values)
 

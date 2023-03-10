@@ -1,0 +1,45 @@
+<odoo>
+
+    <template id="viewurproduct" name="View Product">
+
+        <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+        <t t-call="portal.portal_searchbar">
+            <t t-set="title">Projects</t>
+        </t>
+        <t t-if="not projects">
+            <div class="alert alert-warning mt8" role="alert">
+                There are no Products.
+            </div>
+        </t>
+        <t t-else="">
+            <t t-call="portal.portal_table">
+                    <thead>
+                        <tr>      
+                            <th>Name</th>
+                            <!-- <th>#External ID</th> -->
+                            <th>Quantity Available</th>
+                            <th>Quantity Forcasted</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="projects" t-as="project">
+                            <tr>
+                                <td> <span t-field="project.name"/></td>
+                                <td> <span t-field="project.qty_available"/></td>
+                                 <td> <span t-field="project.virtual_available"/></td>
+                                <!-- <td>  <span class="badge badge-pill badge-secondary"><span t-field="project.stage_id.name"/></span></td> -->
+                            </tr>
+                        </t>
+                    </tbody>
+              
+                 <!-- </t> -->
+            </t>
+        </t>
+    </t>
+      
+  
+                       
+    </template>
+</odoo>
