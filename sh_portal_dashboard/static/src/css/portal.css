@@ -100,7 +100,7 @@
     margin-right: 0;
     margin-top: -20px;
     margin-bottom: 10px;
-    background: #3f51b5;
+    background: #0099cc;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(63, 80, 181, 0.68);
     color: #ffff;
 }
@@ -146,7 +146,7 @@
 }
 .o_portal .o_portal_my_home .form-group .form-control {
     border: 0 !important;
-    background-image: linear-gradient(0deg, #3f50b5 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
+    background-image: linear-gradient(0deg, #0099cc 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
     background-size: 0 100%, 100% 100%;
     background-repeat: no-repeat;
     background-position: bottom, 50% calc(100% - 1px);
@@ -186,7 +186,7 @@
     font-weight: 600;
     font-size: 15px;
     margin-right: 0;
-    background: #3f51b5;
+    background: #0099cc;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(63, 80, 181, 0.68);
     color: #ffff;
 }
@@ -214,7 +214,7 @@
 
 .sh_dashboard_img {
     /*background:url('/sh_portal_dashboard/static/src/img/header.jpg');*/
-    background: #3f51b5;
+    background: #0099cc;
     height: 130px;
     background-position: bottom;
     background-size: cover;
@@ -232,7 +232,7 @@
 }
 .o_portal .sh_dashboard_table .text-center {
     border-radius: 3px 3px 0px 0px;
-    background-color: #3f51b5;
+    background-color: #0099cc;
     padding: 15px;
     font-weight: 600;
     font-size: 15px;
@@ -304,8 +304,8 @@
 }
 .o_portal .js_cls_sh_portal_dashbaord_table_no_data_msg {
     border-radius: 0px 0px 4px 4px;
-    background-color: #3f50b554;
-    border-color: #3f50b554;
+    background-color: #0099cc;
+    border-color: #0099cc;
     color: #000000;
     border: 0px;
 }
@@ -316,7 +316,7 @@
 
 .o_portal .o_portal_wrap .o_portal_navbar #o_portal_navbar_content .form-inline #portal_searchbar_sortby {
     border: 0 !important;
-    background-image: linear-gradient(0deg, #3f50b5 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
+    background-image: linear-gradient(0deg, #0099cc 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
     background-size: 0 100%, 100% 100%;
     background-repeat: no-repeat;
     background-position: bottom, 50% calc(100% - 1px);
@@ -337,7 +337,7 @@
 }
 .o_portal #portal_searchbar_filters {
     border: 0 !important;
-    background-image: linear-gradient(0deg, #3f50b5 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
+    background-image: linear-gradient(0deg, #0099cc 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
     background-size: 0 100%, 100% 100%;
     background-repeat: no-repeat;
     background-position: bottom, 50% calc(100% - 1px);
@@ -361,7 +361,7 @@
 }
 .o_portal #portal_searchbar_groupby {
     border: 0 !important;
-    background-image: linear-gradient(0deg, #3f50b5 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
+    background-image: linear-gradient(0deg, #0099cc 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
     background-size: 0 100%, 100% 100%;
     background-repeat: no-repeat;
     background-position: bottom, 50% calc(100% - 1px);
@@ -382,8 +382,8 @@
 }
 .o_portal .o_portal_search_panel .btn-secondary {
     color: #ffffff;
-    background-color: #3f50b5;
-    border-color: #3f50b5;
+    background-color: #0099cc;
+    border-color: #0099cc;
 }
 .o_portal .table td {
     vertical-align: middle;
